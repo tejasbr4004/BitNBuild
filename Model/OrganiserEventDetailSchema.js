@@ -38,12 +38,12 @@ OrganiserEventSchema.pre('findOneAndUpdate', function (next) {
 });
 
 OrganiserEventSchema.pre('save', function (next) {
-    const currentDate = new Date().toLocaleString();
+    const currentDate = new Date().toISOString();
 
     if (!this.createdAt) {
         this.createdAt = currentDate;
     }
-
+    this.updatedAt = currentDate;
     next();
 });
 
