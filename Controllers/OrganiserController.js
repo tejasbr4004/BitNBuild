@@ -22,8 +22,8 @@ const MapSubmissions_get_all_details=(req,res)=>{
                             contentType:'json/applications',
                             url_individual_details:process.env.hostUrl+process.env.organiser_event_details_route+'/'+doc._id,
                        },
-                       createdAt:doc.createdAt?doc.createdAt.toLocaleString():null,
-                       updatedAt:doc.updatedAt?doc.updatedAt.toLocaleString():null
+                       createdAt:doc.createdAt?doc.createdAt:null,
+                       updatedAt:doc.updatedAt?doc.updatedAt:null
 
                     }
                          

@@ -38,7 +38,7 @@ OrganiserEventSchema.pre('findOneAndUpdate', function (next) {
 });
 
 OrganiserEventSchema.pre('save', function (next) {
-    const currentDate = new Date();
+    const currentDate = new Date().toLocaleString();
 
     if (!this.createdAt) {
         this.createdAt = currentDate;
