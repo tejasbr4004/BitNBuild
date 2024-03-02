@@ -4,7 +4,7 @@ const OrganiserEventDetails=require('../Model/OrganiserEventDetailSchema');
 
 
 
-const organiser_get_all_details=(req,res)=>{
+const MapSubmissions_get_all_details=(req,res)=>{
     OrganiserEventDetails.find().sort({createdAt:-1})
         .exec()
         .then((organiserEventDetails)=>{
@@ -13,21 +13,14 @@ const organiser_get_all_details=(req,res)=>{
                 eventslength:organiserEventDetails.length,   
                 Events:organiserEventDetails.map((doc)=>{
                    return { 
-                        organisername:doc.organisername,
-                        themeofevent:doc.themeofevent,
-                        eventdetail:doc.eventdetail,
-                        eventposter:doc.eventposter,
-                        dateofevent:doc.dateofevent,
-                        eventtype:doc.eventtype,
-                        organiseremail:doc.organiseremail,
-                        timeofevent:doc.timeofevent,
-                        venueofevent:doc.venueofevent,
-                        eventposter:doc.eventposter?process.env.hostUrl+'/uploads/'+doc.eventposter:"image or file has not been uploaded to this event",
+                        teamname:doc.teamname,
+                        member1:doc.member1,
+                        member2:doc.member2,
+                        member3:doc.member3,
                         eventapi_info:{
                             method:'GET',
-                            contentType:'multipart/form-data',
+                            contentType:'json/applications',
                             url_individual_details:process.env.hostUrl+process.env.organiser_event_details_route+'/'+doc._id,
-                            description:'This will display the individual details of event from the database'
                        },
                        createdAt:doc.createdAt?doc.createdAt.toLocaleString():null,
                        updatedAt:doc.updatedAt?doc.updatedAt.toLocaleString():null
@@ -44,7 +37,7 @@ const organiser_get_all_details=(req,res)=>{
         .catch((error)=>{
             console.log(error)
            res.status(500).json({
-            message:'getting events info failed..',
+            message:'getting submissions info failed..',
             error:error
            })
         })
@@ -52,21 +45,36 @@ const organiser_get_all_details=(req,res)=>{
 
 
 
+
+
+
+const organiser_get_all_details=(req,res)=>{
+    res.status(200).json({
+        Fest:"UVCE impetus24.0  MAP event",
+        message1:"Congratulations for successfully getting source link of MAP event!",
+        message2:"Now, proceed with posting, your teamname and members name Fassstttt!",
+        message3:"ALL the Best, And Thankyou for participating in MAP event......",
+        message4:"make sure u entered the teamname while posting data,the one which u guys submitted in the form while registering for MAP event",
+        message5:"And all yours team members name should be posted"
+    })
+}
+
+
+
+
+
+
+
 const organiser_events_post_details = (req, res) => {
-    console.log(req.file);
-    console.log(req.url);
+    // console.log(req.file);
+    // console.log(req.url);
 
     const organiserEvents_details = new OrganiserEventDetails({
         _id: new mongoose.Types.ObjectId(),
-        organisername:req.body.organisername,
-        themeofevent:req.body.themeofevent,
-        eventdetail:req.body.eventdetail,
-        dateofevent:req.body.dateofevent,
-        eventtype:req.body.eventtype,
-        organiseremail:req.body.organiseremail,
-        timeofevent:req.body.timeofevent,
-        venueofevent:req.body.venueofevent,
-        eventposter: req.file ? req.file.filename : undefined
+        teamname:req.body.teamname,
+        member1:req.body.member1,
+        member2:req.body.member2,
+        member3:req.body.member3,
     });
 
     organiserEvents_details.save()
@@ -90,5 +98,6 @@ const organiser_events_post_details = (req, res) => {
 
 module.exports={
     organiser_get_all_details,
-    organiser_events_post_details
+    organiser_events_post_details,
+    MapSubmissions_get_all_details
 }
