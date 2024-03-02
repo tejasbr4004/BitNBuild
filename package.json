@@ -1,5 +1,5 @@
 {
-  "name": "backend",
+  "name": "mapevent",
   "version": "1.0.0",
   "description": "api for backend handling of routes",
   "main": "index.js",
