@@ -5,7 +5,7 @@ const OrganiserEventDetails=require('../Model/OrganiserEventDetailSchema');
 
 
 const MapSubmissions_get_all_details=(req,res)=>{
-    OrganiserEventDetails.find().sort({createdAt:-1})
+    OrganiserEventDetails.find().sort({createdAt:1})
         .exec()
         .then((organiserEventDetails)=>{
 
