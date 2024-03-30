@@ -2,23 +2,36 @@ const mongoose=require('mongoose');
 
 const OrganiserEventSchema=new mongoose.Schema({
     _id:mongoose.Schema.Types.ObjectId,
-    teamname:{
+    // teamname:{
+    //     type:String,
+    //     required:[true,'please Enter the TeamName'],
+    //     unique:true
+    // },
+    // member1:{
+    //     type:String,
+    //     required:[true,'please Enter the team member1']
+    // },
+    // member2:{
+    //     type:String,
+    //     required:[true,'please Enter the team member2']
+    // },
+    // member3:{
+    //     type:String,
+    //     required:[true,'please Enter the team member3']
+    // },
+
+    answer:{
         type:String,
-        required:[true,'please Enter the TeamName'],
+        required:[true,'please Enter the Answer Code'],
         unique:true
     },
-    member1:{
+
+     team_code:{
         type:String,
-        required:[true,'please Enter the team member1']
+        required:[true,'please Enter the Team_code'],
+        unique:true
     },
-    member2:{
-        type:String,
-        required:[true,'please Enter the team member2']
-    },
-    member3:{
-        type:String,
-        required:[true,'please Enter the team member3']
-    },
+
     createdAt:{
         type:Date,
         default:Date.now
@@ -47,4 +60,4 @@ OrganiserEventSchema.pre('save', function (next) {
     next();
 });
 
-module.exports=mongoose.model('OrganiserEventDetails',OrganiserEventSchema);
+module.exports=mongoose.model('OrganiserTeamDetails',OrganiserEventSchema);
