@@ -14,7 +14,7 @@ const MapSubmissions_get_all_details=(req,res)=>{
                 Events:organiserTeamDetails.map((doc)=>{
                    return { 
                         team_code:doc.team_code,
-                        answer:doc.answer,
+                        answer:doc.answer_code,
                         eventapi_info:{
                             method:'GET',
                             contentType:'json/applications',
@@ -75,11 +75,11 @@ const organiser_events_post_details = (req, res) => {
     // });
     const organiserTeams_details = new OrganiserTeamDetails({
         _id: new mongoose.Types.ObjectId(),
-        answer:req.body.answer,
+        answer_code:req.body.answer_code,
         team_code:req.url,
     });
 
-    if(req.body.answer==="afjkfmppppppppc" ||req.body.answer==="afjkfrrpppppc" ||req.body.answer==="afjkfmppttppppc" ||req.body.answer==="afjkfmpppKKppc" ||req.body.answer==="afjkfmpaqwpppppc" || req.body.answer==="afjkfmmmmmpc"||req.body.answer==="afjkfmqqqqppllc" ||req.body.answer==="afjkfmjjjazxssc"||req.body.answer==="afjkfmxxxszdc" ||req.body.answer==="afjkfmjjfyxnbc"){
+    if(req.body.answer_code==="afjkfmppppppppc" ||req.body.answer_code==="afjkfrrpppppc" ||req.body.answer_code==="afjkfmppttppppc" ||req.body.answer_code==="afjkfmpppKKppc" ||req.body.answer_code==="afjkfmpaqwpppppc" || req.body.answer_code==="afjkfmmmmmpc"||req.body.answer_code==="afjkfmqqqqppllc" ||req.body.answer_code==="afjkfmjjjazxssc"||req.body.answer_code==="afjkfmxxxszdc" ||req.body.answer_code==="afjkfmjjfyxnbc"){
     organiserTeams_details.save()
         .then(() => {
             res.status(200).json({

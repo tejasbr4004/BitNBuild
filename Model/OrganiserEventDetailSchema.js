@@ -20,7 +20,7 @@ const OrganiserEventSchema=new mongoose.Schema({
     //     required:[true,'please Enter the team member3']
     // },
 
-    answer:{
+    answer_code:{
         type:String,
         required:[true,'please Enter the Answer Code'],
         unique:true
@@ -28,8 +28,7 @@ const OrganiserEventSchema=new mongoose.Schema({
 
      team_code:{
         type:String,
-        required:[true,'please Enter the Team_code'],
-        unique:true
+        required:[true,'please Enter the Team_code']
     },
 
     createdAt:{
