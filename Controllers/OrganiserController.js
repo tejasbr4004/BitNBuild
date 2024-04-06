@@ -79,7 +79,7 @@ const organiser_events_post_details = (req, res) => {
         team_code:req.url,
     });
 
-    if(req.body.answer_code==="afjkfmppppppppc" ||req.body.answer_code==="afjkfrrpppppc" ||req.body.answer_code==="afjkfmppttppppc" ||req.body.answer_code==="afjkfmpppKKppc" ||req.body.answer_code==="afjkfmpaqwpppppc" || req.body.answer_code==="afjkfmmmmmpc"||req.body.answer_code==="afjkfmqqqqppllc" ||req.body.answer_code==="afjkfmjjjazxssc"||req.body.answer_code==="afjkfmxxxszdc" ||req.body.answer_code==="afjkfmjjfyxnbc"){
+    if(req.body.answer_code===process.env.secondpart || (req.body.answer_code===process.env.team1 && req.url=='/MAP_TEAM1') || (req.body.answer_code===process.env.team2 && req.url=='/MAP_TEAM2') || (req.body.answer_code===process.env.team3 && req.url=='/MAP_TEAM3') ||(req.body.answer_code===process.env.team4 && req.url=='/MAP_TEAM4') || (req.body.answer_code===process.env.team5 && req.url=='/MAP_TEAM5')|| (req.body.answer_code===process.env.team6 && req.url=='/MAP_TEAM6') || (req.body.answer_code===process.env.team7 && req.url=='/MAP_TEAM7')|| (req.body.answer_code===process.env.team8 && req.url=='/MAP_TEAM8') || (req.body.answer_code===process.env.team9 && req.url=='/MAP_TEAM9') || (req.body.answer_code===process.env.team10 && req.url=='/MAP_TEAM10') || (req.body.answer_code==="abcdef" && req.url=='/sample')){
     organiserTeams_details.save()
         .then(() => {
             res.status(200).json({
